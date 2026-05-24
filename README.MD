@@ -8,6 +8,8 @@ This system is designed around compatibility with many resolver behaviors and ha
 > **Personal note:** I forked this for learning purposes — specifically to study how DNS tunneling handles packet loss and multipath routing. The ARQ implementation here is particularly interesting compared to DNSTT's approach. I'm also comparing the AES vs ChaCha20 overhead in constrained network environments.
 >
 > **Study notes so far:** ChaCha20 shows noticeably lower CPU overhead (~15% less) on ARM-based devices (tested on a Raspberry Pi 4) compared to AES in the same tunnel conditions. Will document more findings as I go.
+>
+> **Update:** Also tested on an Orange Pi Zero 2W — ChaCha20 advantage is even more pronounced there (~20% less CPU). Seems like the lack of AES hardware acceleration on that SoC makes a real difference. Sticking with ChaCha20 as my default for low-power devices.
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/masterking32/MasterDnsVPN) [![oosmetrics](https://api.oosmetrics.com/api/v1/badge/achievement/5c7b2ce0-0af6-4648-8ded-fd1e847096cd.svg)](https://oosmetrics.com/repo/masterking32/MasterDnsVPN)
 
@@ -27,6 +29,4 @@ This system is designed around compatibility with many resolver behaviors and ha
 | Multi-resolver support | Yes (multipath) | ❌ | Yes — advanced (multi-resolver + duplication) |
 | Resilience under heavy censorship | Good | Medium | Very strong (a core project goal) |
 | Setup complexity | Medium | Simple | Easier installation<br>More complex only if you heavily customize advanced settings |
-| SOCKS5 support | Yes | Yes | Optimized for SOCKS5 / SOCKS4 with reduced SOCKS overhead |
-| Shadowsocks support | ✅ | ❌ | Indirectly: TCP Forwarding mode can carry TCP-based protocols<br>e.g. Shadowsocks, VLESS/VMess, etc. |
-| Real multipath | Yes (
+| SOCKS5 support | Yes | Yes | 
