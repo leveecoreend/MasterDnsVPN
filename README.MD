@@ -5,7 +5,7 @@
 **MasterDnsVPN** is a scientific and research-oriented project for carrying TCP traffic through DNS queries and responses. In broad goal, it is similar to projects such as DNSTT or SlipStream, but it follows a fundamentally different structure and implementation approach.
 This system is designed around compatibility with many resolver behaviors and harsh network conditions, with the goal of preserving the highest possible stability and data delivery even in the worst cases.
 
-> **Personal note:** I forked this for learning purposes — specifically to study how DNS tunneling handles packet loss and multipath routing. The ARQ implementation here is particularly interesting compared to DNSTT's approach.
+> **Personal note:** I forked this for learning purposes — specifically to study how DNS tunneling handles packet loss and multipath routing. The ARQ implementation here is particularly interesting compared to DNSTT's approach. I'm also comparing the AES vs ChaCha20 overhead in constrained network environments.
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/masterking32/MasterDnsVPN) [![oosmetrics](https://api.oosmetrics.com/api/v1/badge/achievement/5c7b2ce0-0af6-4648-8ded-fd1e847096cd.svg)](https://oosmetrics.com/repo/masterking32/MasterDnsVPN)
 
@@ -28,6 +28,4 @@ This system is designed around compatibility with many resolver behaviors and ha
 | SOCKS5 support | Yes | Yes | Optimized for SOCKS5 / SOCKS4 with reduced SOCKS overhead |
 | Shadowsocks support | ✅ | ❌ | Indirectly: TCP Forwarding mode can carry TCP-based protocols<br>e.g. Shadowsocks, VLESS/VMess, etc. |
 | Real multipath | Yes (QUIC multipath) | ❌ | Yes (multi-resolver + duplication) |
-| Adaptive routing | Limited | ❌ | Advanced (latency/loss based) |
-| Design goal | High speed and efficiency | Simplicity and stability | Surviving the harshest networks — stability, speed, and efficiency |
-| Implementation language | Rust | Go | Main ve
+| Adaptive routing | Limit
